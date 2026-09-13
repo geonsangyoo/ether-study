@@ -37,3 +37,6 @@ Thumbs.db
 
 # Misc
 *.tsbuildinfo
+
+# Snopshots
+.gas-snapshot
