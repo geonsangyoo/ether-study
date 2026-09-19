@@ -47,8 +47,19 @@ $ anvil
 
 ### Deploy
 
+Deployment is wrapped by the `Makefile`, which reads `ACCOUNT` from `.env` (your `cast wallet import` keystore name) and broadcasts via the `sepolia`/`mainnet` RPC aliases defined in `foundry.toml`.
+
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+# local (anvil must be running; uses anvil's default account, no keystore needed)
+$ make deploy-local script/Counter.s.sol
+
+# broadcast a deployment
+$ make deploy-testnet script/Counter.s.sol
+$ make deploy-mainnet script/Counter.s.sol
+
+# simulate only, without broadcasting (pass dry as an extra argument)
+$ make deploy-testnet script/Counter.s.sol dry
+$ make deploy-mainnet script/Counter.s.sol dry
 ```
 
 ### Cast
